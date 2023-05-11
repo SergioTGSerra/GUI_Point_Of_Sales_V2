@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../Assets/Css/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.DomianController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../Assets/Css/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.DomainController">
    <BorderPane maxHeight="600.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
       <top>
          <VBox alignment="CENTER" BorderPane.alignment="CENTER">
@@ -24,14 +24,14 @@
          </VBox>
       </top>
       <center>
-         <TextField alignment="CENTER" focusTraversable="false" promptText="Enter the domain provided by the software vendor here." BorderPane.alignment="CENTER">
+         <TextField fx:id="domain" alignment="CENTER" focusTraversable="false" promptText="Enter the domain provided by the software vendor here." BorderPane.alignment="CENTER">
             <BorderPane.margin>
                <Insets left="60.0" right="60.0" />
             </BorderPane.margin>
          </TextField>
       </center>
       <bottom>
-         <Button mnemonicParsing="false" text="Define Domain &gt;" BorderPane.alignment="CENTER">
+         <Button mnemonicParsing="false" onAction="#validDomain" text="Define Domain &gt;" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                <Insets bottom="40.0" />
             </BorderPane.margin>

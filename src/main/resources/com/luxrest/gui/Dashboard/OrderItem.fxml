@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.Dashboard.OrderItemController">
+    <HBox>
+        <ImageView fitHeight="65.0" fitWidth="65.0">
+            <Image url="@../Assets/Images/logo.png" />
+        </ImageView>
+        <Label fx:id="productName" style="-fx-font-weight: 500;" styleClass="fontSizeLabels" text="name" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Label fx:id="priceLabel" style="-fx-font-weight: bold 700;" styleClass="fontSizeLabels" text="price" />
+    </HBox>
+    <HBox>
+        <Region HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets />
+            </HBox.margin></Region>
+        <Button fx:id="decrease" styleClass="quantityButton" text="-">
+            <HBox.margin>
+                <Insets right="20.0" />
+            </HBox.margin>
+        </Button>
+        <Label fx:id="quantityLabel" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" style="-fx-font-size: 14; -fx-font-weight: bold;" text="1">
+            <HBox.margin>
+                <Insets top="5.0" />
+            </HBox.margin></Label>
+        <Button fx:id="increment" styleClass="quantityButton" text="+">
+            <HBox.margin>
+                <Insets left="20.0" />
+            </HBox.margin>
+        </Button>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="remove" alignment="TOP_RIGHT" styleClass="removeButton" text="x" />
+    </HBox>
+    <Separator minHeight="20.0" />
+    <padding>
+        <Insets right="10.0" />
+    </padding>
+</VBox>
