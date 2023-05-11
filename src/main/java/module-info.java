@@ -5,4 +5,5 @@ module com.luxrest.gui {
 
     opens com.luxrest.gui to javafx.fxml;
     exports com.luxrest.gui;
+    exports com.luxrest.gui.Controllers;
 }

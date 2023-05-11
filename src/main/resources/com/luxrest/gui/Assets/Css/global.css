@@ -1,0 +1,16 @@
+.root{
+    -fx-background-color: #EFEFEF;
+}
+
+.button{
+    -fx-background-color: #003049;
+    -fx-text-fill: #FFF;
+    -fx-font: 14 system;
+    font-weight: bolder;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+}
