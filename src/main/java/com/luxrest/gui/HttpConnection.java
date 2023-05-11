@@ -1,5 +1,6 @@
 package com.luxrest.gui;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -9,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class HttpConnection {
-    public static JSONObject Get(String urlPram, String token) {
+    public static JSONArray Get(String urlPram, String token) {
         try {
             var url = new URL(urlPram);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -29,7 +30,7 @@ public class HttpConnection {
 
                 var parse = new JSONParser();
 
-                return (JSONObject) parse.parse(String.valueOf(responseString));
+                return (JSONArray) parse.parse(String.valueOf(responseString));
             }
         } catch (Exception e) {
             e.printStackTrace();

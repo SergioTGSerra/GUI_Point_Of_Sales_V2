@@ -10,4 +10,5 @@ module com.luxrest.gui {
     exports com.luxrest.gui;
     exports com.luxrest.gui.Controllers;
     exports com.luxrest.gui.Controllers.Dashboard;
+    exports com.luxrest.gui.Controllers.Dashboard.Modules.Orders;
 }
