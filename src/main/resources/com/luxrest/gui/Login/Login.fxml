@@ -43,8 +43,14 @@
                   <VBox.margin>
                      <Insets bottom="40.0" />
                   </VBox.margin></TextField>
-               <PasswordField alignment="CENTER" promptText="Password" />
+               <PasswordField alignment="CENTER" promptText="Password">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets></PasswordField>
             </children>
+            <padding>
+               <Insets bottom="20.0" />
+            </padding>
          </VBox>
       </center>
    </BorderPane>
