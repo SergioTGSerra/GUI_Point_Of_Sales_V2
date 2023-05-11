@@ -21,8 +21,10 @@ public class App extends Application {
             stmt.close();
             rs.close();
 
+            //System.out.println(endpoint);
+
             FXMLLoader fxmlLoader;
-            if(endpoint == null){
+            if(endpoint == null || endpoint.isBlank() || endpoint.isEmpty()){
                 fxmlLoader = new FXMLLoader(App.class.getResource("Domain/Domain.fxml"));
             }else{
                 Auth.getInstance().setEndPoint(endpoint);
