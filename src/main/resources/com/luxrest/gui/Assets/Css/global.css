@@ -6,7 +6,7 @@
     -fx-background-color: #003049;
     -fx-text-fill: #FFF;
     -fx-font: 14 system;
-    font-weight: bolder;
+    -fx-font-weight: bold;
 }
 
 .text-field {

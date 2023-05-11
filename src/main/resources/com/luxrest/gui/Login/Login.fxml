@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../Assets/Css/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.LoginController">
+   <BorderPane maxHeight="600.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <top>
+         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+               <Insets top="30.0" />
+            </BorderPane.margin>
+            <ImageView fitHeight="80.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../Assets/Images/logo.png" />
+            </ImageView>
+            <Label text="LuxRest - Login" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </VBox>
+      </top>
+      <bottom>
+         <Button mnemonicParsing="false" text="Login       &gt;" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+               <Insets bottom="40.0" />
+            </BorderPane.margin>
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+         </Button>
+      </bottom>
+      <center>
+         <VBox alignment="CENTER" maxWidth="250.0" BorderPane.alignment="CENTER">
+            <children>
+               <TextField alignment="CENTER" focusTraversable="false" promptText="Username">
+                  <VBox.margin>
+                     <Insets bottom="40.0" />
+                  </VBox.margin></TextField>
+               <PasswordField alignment="CENTER" promptText="Password" />
+            </children>
+         </VBox>
+      </center>
+   </BorderPane>
+</AnchorPane>
