@@ -4,8 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane fx:id="dashboardContainer" stylesheets="@../Assets/Css/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.Dashboard.DashboardController">
+<GridPane stylesheets="@../Assets/Css/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.Dashboard.DashboardController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" percentWidth="14" />
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="1" />
@@ -23,28 +24,54 @@
             <Insets bottom="40.0" top="20.0" />
          </VBox.margin>
       </ImageView>
-      <ScrollPane fitToHeight="true" fitToWidth="true" vbarPolicy="NEVER">
-         <VBox fx:id="categories" alignment="TOP_CENTER" spacing="30" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+         <VBox fx:id="categories" alignment="TOP_CENTER" spacing="30" style="-fx-background-color: #EFEFEF;">
+            <padding>
+               <Insets bottom="10.0" />
+            </padding></VBox>
       </ScrollPane>
    </VBox>
    <VBox GridPane.columnIndex="2">
-      <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
-         <VBox fx:id="MidColunm" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+         <VBox fx:id="MidColunm" style="-fx-background-color: #EFEFEF;">
+            <padding>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding></VBox>
       </ScrollPane>
    </VBox>
-   <VBox alignment="CENTER" GridPane.columnIndex="4">
+   <VBox alignment="CENTER" style="-fx-background-color: #FFF;" GridPane.columnIndex="4">
       <HBox alignment="BOTTOM_LEFT">
          <Region />
-         <Label text="Novo pedido" />
+         <Label text="New Order">
+            <font>
+               <Font size="18.0" />
+            </font></Label>
          <Region HBox.hgrow="ALWAYS" />
-         <Button onAction="#deleteOrderAction" text="Apagar" />
+         <Button onAction="#deleteOrderAction" style="-fx-background-color: transparent;">
+            <graphic>
+               <ImageView fitHeight="22.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../Assets/Icons/delete.png"/>
+               </ImageView>
+            </graphic></Button>
          <VBox.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </HBox>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-         <VBox fx:id="order" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" style="-fx-background-color: #FFF;" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+         <VBox fx:id="order" style="-fx-background-color: #FFF;">
+            <padding>
+               <Insets left="5.0" right="5.0" />
+            </padding></VBox>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
       </ScrollPane>
-      <Button fx:id="buttonPay" maxHeight="50.0" maxWidth="1.7976931348623157E308" onAction="#openPayment" styleClass="payButton" text="Pay" VBox.vgrow="ALWAYS" />
+      <Button fx:id="buttonPay" maxHeight="50.0" maxWidth="1.7976931348623157E308" onAction="#buttonPaymentAction" styleClass="payButton" text="New Order" VBox.vgrow="ALWAYS" />
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
    </VBox>
 </GridPane>

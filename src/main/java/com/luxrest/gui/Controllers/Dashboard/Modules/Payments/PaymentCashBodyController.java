@@ -1,5 +1,6 @@
 package com.luxrest.gui.Controllers.Dashboard.Modules.Payments;
 
+import com.luxrest.gui.Controllers.Dashboard.DashboardController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,7 +13,7 @@ public class PaymentCashBodyController {
     public Label receive;
     @FXML
     public Label change;
-    public Double price = 0.0;
+    public Double price = DashboardController.getInstance().getAndUpdatePrice();
     private Double receivedPrice = 0.0;
     public void initialize(){
         amountPay.setText(this.price + "€");

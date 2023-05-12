@@ -12,7 +12,8 @@ public class GridProductItemsController {
     @FXML
     public GridPane products;
 
-    public void addProductToGrid(int idCategory){
+    public void updateProductToGrid(int idCategory){
+        products.getChildren().clear();
         JSONArray array = HttpConnection.Get("http://" + Auth.getInstance().getEndPoint() +  "/api/v1/products/category/"+idCategory, Auth.getInstance().getAccessToken());
         assert array != null;
         int colunas = 4;

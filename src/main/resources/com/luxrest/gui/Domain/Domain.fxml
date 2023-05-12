@@ -20,11 +20,11 @@
                <Insets bottom="40.0" />
             </VBox.margin>
          </Label>
-         <TextField fx:id="domain" alignment="CENTER" focusTraversable="false" maxWidth="500.0" promptText="Enter the domain provided by the software vendor here.">
+         <TextField fx:id="domain" alignment="CENTER" focusTraversable="false" maxWidth="500.0" promptText="Enter the domain provided by the software vendor here." styleClass="auth">
             <VBox.margin>
                <Insets bottom="40.0" />
             </VBox.margin></TextField>
-         <Button mnemonicParsing="false" onAction="#validDomain" text="Define Domain &gt;">
+         <Button mnemonicParsing="false" onAction="#validDomain" styleClass="auth" text="Define Domain &gt;">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>

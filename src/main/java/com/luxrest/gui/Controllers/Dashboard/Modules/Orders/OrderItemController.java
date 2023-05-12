@@ -45,7 +45,7 @@ public class OrderItemController {
         VBox dashboardVbox3 = (VBox) orderVBox.getParent().getParent().getParent().getParent();
         Button buttonPay = (Button) dashboardVbox3.lookup("#buttonPay");
         orderVBox.getChildren().remove(itemVbox);
-        DashboardController.getInstance().calculateTotalPrice(orderVBox, buttonPay);
+        DashboardController.getInstance().getAndUpdatePrice();
     }
 
     public void incrementQnt(ActionEvent event) {
@@ -59,7 +59,7 @@ public class OrderItemController {
         VBox dashboardVbox3 = (VBox) orderVBox.getParent().getParent().getParent().getParent();
         Button buttonPay = (Button) dashboardVbox3.lookup("#buttonPay");
         incrementQnt();
-        DashboardController.getInstance().calculateTotalPrice(orderVBox, buttonPay);
+        DashboardController.getInstance().getAndUpdatePrice();
     }
 
     public void incrementQnt() {
@@ -85,7 +85,7 @@ public class OrderItemController {
         this.quantity--;
         this.quantityLabel.setText(String.valueOf(quantity));
         this.priceLabel.setText(this.price * this.quantity +" €");
-        DashboardController.getInstance().calculateTotalPrice(orderVBox, buttonPay);
+        DashboardController.getInstance().getAndUpdatePrice();
     }
 
     public Double getPrice() {

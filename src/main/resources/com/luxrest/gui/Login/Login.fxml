@@ -25,12 +25,12 @@
                <Insets bottom="20.0" />
             </VBox.margin>
          </Label>
-         <TextField fx:id="username" alignment="CENTER" focusTraversable="false" maxWidth="300.0" promptText="Username">
+         <TextField fx:id="username" alignment="CENTER" focusTraversable="false" maxWidth="300.0" promptText="Username" styleClass="auth">
             <VBox.margin>
                <Insets bottom="40.0" left="100.0" right="100.0" />
             </VBox.margin>
          </TextField>
-         <PasswordField fx:id="password" alignment="CENTER" focusTraversable="false" maxWidth="300.0" promptText="Password">
+         <PasswordField fx:id="password" alignment="CENTER" focusTraversable="false" maxWidth="300.0" promptText="Password" styleClass="auth">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
@@ -38,7 +38,7 @@
                <Insets bottom="40.0" left="100.0" right="100.0" />
             </VBox.margin>
          </PasswordField>
-         <Button mnemonicParsing="false" onAction="#doLogin" text="Login       &gt;">
+         <Button mnemonicParsing="false" onAction="#doLogin" styleClass="auth" text="Login       &gt;">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>

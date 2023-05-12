@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" stylesheets="@../../Css/app.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.Dashboard.Payments.PaymentHeaderController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.Dashboard.Modules.Payments.PaymentHeaderController">
    <HBox alignment="TOP_CENTER">
       <Label alignment="CENTER" styleClass="fontSizeLabelsPayment" text="Payment" textAlignment="CENTER">
          <padding>

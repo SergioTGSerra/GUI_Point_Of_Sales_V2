@@ -2,21 +2,57 @@
     -fx-background-color: #EFEFEF;
 }
 
-.button{
+.scroll-pane {
+    -fx-background-color:transparent;
+}
+
+.vbox {
+    -fx-background-color:transparent;
+}
+
+
+.button.auth{
     -fx-background-color: #003049;
     -fx-text-fill: #FFF;
     -fx-font: 14 system;
     -fx-font-weight: bold;
 }
 
-.text-field {
+.text-field.auth {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: black;
 }
 
-.scroll-pane {
-    -fx-border-width: 0;
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
+.productButton{
+    -fx-background-color: #fff;
+    -fx-pref-width: 150px;
+    -fx-min-height: 150px;
+}
+
+.categoryButton{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 5);
+    -fx-background-radius: 20;
+    -fx-background-color: #fff;
+    -fx-pref-width: 140px;
+    -fx-min-height: 125px;
+}
+
+.categoryButtonSelected{
+    -fx-background-color: #003049;
+    -fx-text-fill: white;
+}
+
+.button.payButton{
+    -fx-font-weight: 400;
+    -fx-background-color: #003049;
+    -fx-text-fill: #fff;
+}
+
+.quantityButton, .removeButton{
+    -fx-background-color: #003049;
+    -fx-background-radius: 100;
+    -fx-text-fill: #fff;
+    -fx-font-size: 15;
+    -fx-font-weight: bold 400;
 }
