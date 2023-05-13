@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class App extends Application {
     @Override
@@ -44,6 +46,14 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                Auth.getInstance().refreshAccessToken();
+            }
+        }, 0, 50000);
+
         launch();
     }
 }
