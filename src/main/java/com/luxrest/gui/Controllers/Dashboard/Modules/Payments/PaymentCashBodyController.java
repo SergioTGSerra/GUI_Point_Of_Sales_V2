@@ -8,45 +8,42 @@ import javafx.scene.control.Label;
 
 public class PaymentCashBodyController {
     @FXML
-    public Label amountPay;
+    public Label amountPayLabel;
     @FXML
-    public Label receive;
+    public Label receiveLabel;
     @FXML
-    public Label change;
-    public Double price = DashboardController.getInstance().getAndUpdatePrice();
+    public Label changeLabel;
+    public Double amountToPay = DashboardController.getInstance().getAndUpdatePrice();
     private Double receivedPrice = 0.0;
+
     public void initialize(){
-        amountPay.setText(this.price + "€");
-        receive.setText(this.receivedPrice + "€");
-        change.setText(this.receivedPrice - this.price + "€");
+        this.amountPayLabel.setText(this.amountToPay + "€");
+        this.receiveLabel.setText("Awaits Insertion");
+        this.changeLabel.setText("Awaits Insertion");
     }
 
-
-    public void setPrice(Double price) {
-        this.price = price;
-        amountPay.setText(this.price + "€");
-        receive.setText(this.receivedPrice + "€");
-    }
-
-    public void addRecivePrice(Double price) {
-        this.receivedPrice += price;
-        receive.setText( this.receivedPrice + "€");
-        if(this.receivedPrice >= this.price) {
-            change.setText(this.receivedPrice - this.price + "€");
-        }
-    }
-
-    public void buttonClicked(ActionEvent event) {
+    public void calculateChange(ActionEvent event) {
         Button button = (Button) event.getSource();
-        String buttonText = button.getText().replace("€", "");
-        Double value = Double.parseDouble(buttonText);
-        addRecivePrice(value);
+        //Get value of clicked button
+        double value = Double.parseDouble(button.getText().replace("€", ""));
+
+        this.receivedPrice += value;
+        this.receiveLabel.setText( this.receivedPrice + "€");
+        if(this.receivedPrice >= this.amountToPay)
+            this.changeLabel.setText(this.receivedPrice - this.amountToPay + "€");
+    }
+
+    public void updateAmountToPay() {
+        this.amountToPay = DashboardController.getInstance().getAndUpdatePrice();
+        this.amountPayLabel.setText(this.amountToPay + "€");
+        if(this.receivedPrice > 0)
+            this.changeLabel.setText(this.receivedPrice - this.amountToPay + "€");
     }
 
     public void buttonClear() {
         this.receivedPrice = 0.0;
-        receive.setText(this.receivedPrice + "€");
-        change.setText(this.receivedPrice + "€");
+        this.receiveLabel.setText("0 €");
+        this.changeLabel.setText("0 €");
     }
 
     /*** Singleton ***/

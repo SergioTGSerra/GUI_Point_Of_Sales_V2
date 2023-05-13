@@ -56,3 +56,20 @@
     -fx-font-size: 15;
     -fx-font-weight: bold 400;
 }
+
+.cashChangeButton{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 5);
+    -fx-background-radius: 20;
+    -fx-background-color: #fff;
+    -fx-pref-width: 120px;
+    -fx-min-height: 115px;
+}
+
+.selectOptionPaymentButton{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 5);
+    -fx-background-radius: 20;
+    -fx-background-color: #003049;
+    -fx-pref-width: 140px;
+    -fx-min-height: 125px;
+    -fx-text-fill: white;
+}

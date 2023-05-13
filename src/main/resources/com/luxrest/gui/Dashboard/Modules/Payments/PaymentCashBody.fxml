@@ -9,19 +9,19 @@
       <Region />
       <Label styleClass="fontSizeLabelsPayment" text="Valor do pedido" />
       <Region HBox.hgrow="ALWAYS" />
-      <Label fx:id="amountPay" styleClass="fontSizeLabelsPayment" text="€"/>
+      <Label fx:id="amountPayLabel" styleClass="fontSizeLabelsPayment" text="€"/>
    </HBox>
    <HBox>
       <Region />
       <Label styleClass="fontSizeLabelsPayment" text="Recebido" />
       <Region HBox.hgrow="ALWAYS" />
-      <Label fx:id="receive" styleClass="fontSizeLabelsPayment" text="€"/>
+      <Label fx:id="receiveLabel" styleClass="fontSizeLabelsPayment" text="€"/>
    </HBox>
    <HBox>
       <Region />
       <Label styleClass="fontSizeLabelsPayment" text="Troco" />
       <Region HBox.hgrow="ALWAYS"/>
-      <Label fx:id="change" styleClass="fontSizeLabelsPayment" text="€"/>
+      <Label fx:id="changeLabel" styleClass="fontSizeLabelsPayment" text="€"/>
    </HBox>
    <GridPane alignment="CENTER" hgap="20.0" vgap="20.0">
       <columnConstraints>
@@ -35,15 +35,15 @@
          <RowConstraints vgrow="SOMETIMES" />
          <RowConstraints vgrow="SOMETIMES" />
       </rowConstraints>
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="0.5€" GridPane.columnIndex="1" />
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="1€" GridPane.columnIndex="2" />
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="2€" GridPane.columnIndex="3" />
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="5€" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="10€" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="20€" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="50€" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button onAction="#buttonClicked" styleClass="changeButton" text="100€" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Button onAction="#buttonClear" styleClass="changeButton" text="Apagar" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="0.5€" GridPane.columnIndex="1" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="1€" GridPane.columnIndex="2" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="2€" GridPane.columnIndex="3" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="5€" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="10€" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="20€" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="50€" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button onAction="#calculateChange" styleClass="cashChangeButton" text="100€" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Button onAction="#buttonClear" styleClass="cashChangeButton" text="Apagar" GridPane.columnIndex="3" GridPane.rowIndex="2" />
    </GridPane>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />

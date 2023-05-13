@@ -19,7 +19,7 @@
             <HBox.margin>
                 <Insets />
             </HBox.margin></Region>
-        <Button fx:id="decrease" styleClass="quantityButton" text="-">
+        <Button onAction="#decreaseQnt" styleClass="quantityButton" text="-">
             <HBox.margin>
                 <Insets right="20.0" />
             </HBox.margin>
@@ -28,13 +28,13 @@
             <HBox.margin>
                 <Insets top="5.0" />
             </HBox.margin></Label>
-        <Button fx:id="increment" styleClass="quantityButton" text="+">
+        <Button onAction="#incrementQnt" styleClass="quantityButton" text="+">
             <HBox.margin>
                 <Insets left="20.0" />
             </HBox.margin>
         </Button>
         <Region HBox.hgrow="ALWAYS" />
-        <Button fx:id="remove" alignment="TOP_RIGHT" styleClass="removeButton" text="x" />
+        <Button alignment="TOP_RIGHT" onAction="#removeProduct" styleClass="removeButton" text="x" />
     </HBox>
     <Separator minHeight="20.0" />
     <padding>

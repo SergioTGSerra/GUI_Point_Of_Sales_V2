@@ -1,6 +1,7 @@
 package com.luxrest.gui.Controllers.Dashboard.Modules.Orders;
 
 import com.luxrest.gui.Controllers.Dashboard.DashboardController;
+import com.luxrest.gui.Controllers.Dashboard.Modules.Payments.PaymentCashBodyController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,23 +18,14 @@ public class OrderItemController {
     public Label priceLabel;
     @FXML
     public Label quantityLabel;
-    @FXML
-    public Button remove;
-    @FXML
-    public Button increment;
-    @FXML
-    public Button decrease;
 
     public void setData(Integer id, String name, Double price){
-        quantity = 1;
+        this.quantity = 1;
         this.productId = id;
         this.productName.setText(name);
         this.price = price;
         this.priceLabel.setText(price+" €");
-        this.quantityLabel.setText(String.valueOf(quantity));
-        remove.setOnAction(this::removeProduct);
-        decrease.setOnAction(this::decreaseQnt);
-        increment.setOnAction(this::incrementQnt);
+        this.quantityLabel.setText(String.valueOf(this.quantity));
     }
 
     public void removeProduct(ActionEvent event) {
@@ -43,18 +35,14 @@ public class OrderItemController {
         VBox itemVbox = (VBox) button.getParent().getParent();
 
         DashboardController.getInstance().order.getChildren().remove(itemVbox);
-        DashboardController.getInstance().getAndUpdatePrice();
-    }
-
-    public void incrementQnt(ActionEvent event) {
-        incrementQnt();
-        DashboardController.getInstance().getAndUpdatePrice();
+        updatePriceGlobal();
     }
 
     public void incrementQnt() {
         this.quantity++;
-        this.quantityLabel.setText(String.valueOf(quantity));
-        this.priceLabel.setText(this.price * quantity +" €");
+        this.quantityLabel.setText(String.valueOf(this.quantity));
+        this.priceLabel.setText(this.price * this.quantity +" €");
+        updatePriceGlobal();
     }
 
     public void decreaseQnt(ActionEvent event) {
@@ -63,20 +51,26 @@ public class OrderItemController {
             return;
         }
         this.quantity--;
-        this.quantityLabel.setText(String.valueOf(quantity));
+        this.quantityLabel.setText(String.valueOf(this.quantity));
         this.priceLabel.setText(this.price * this.quantity +" €");
-        DashboardController.getInstance().getAndUpdatePrice();
+        updatePriceGlobal();
     }
 
     public Integer getProductId() {
-        return productId;
+        return this.productId;
     }
 
     public Double getPrice() {
-        return price;
+        return this.price;
     }
 
     public Integer getQuantity() {
-        return quantity;
+        return this.quantity;
+    }
+
+    public void updatePriceGlobal() {
+        DashboardController.getInstance().getAndUpdatePrice();
+        if(PaymentCashBodyController.getInstance() != null)
+            PaymentCashBodyController.getInstance().updateAmountToPay();
     }
 }
