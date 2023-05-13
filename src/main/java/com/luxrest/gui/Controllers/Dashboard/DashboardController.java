@@ -102,6 +102,10 @@ public class DashboardController {
     }
 
     public void deleteOrderAction() {
+        if(paymentOpen){
+            MidColunm.getChildren().clear();
+            paymentOpen = false;
+        }
         order.getChildren().clear();
         getAndUpdatePrice();
     }
