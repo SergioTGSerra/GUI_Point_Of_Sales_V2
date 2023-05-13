@@ -8,8 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class OrderItemController {
+    private Integer productId;
     private Double price;
-    private int quantity;
+    private Integer quantity;
     @FXML
     public Label productName;
     @FXML
@@ -23,8 +24,9 @@ public class OrderItemController {
     @FXML
     public Button decrease;
 
-    public void setData(Long id, String name, Double price){
+    public void setData(Integer id, String name, Double price){
         quantity = 1;
+        this.productId = id;
         this.productName.setText(name);
         this.price = price;
         this.priceLabel.setText(price+" €");
@@ -39,25 +41,12 @@ public class OrderItemController {
         Button button = (Button) event.getSource();
         // get the parent VBox of element
         VBox itemVbox = (VBox) button.getParent().getParent();
-        // get the VBox Parent of the itemVbox
-        VBox orderVBox = (VBox) itemVbox.getParent();
-        // get the 3 vbox dashboard right
-        VBox dashboardVbox3 = (VBox) orderVBox.getParent().getParent().getParent().getParent();
-        Button buttonPay = (Button) dashboardVbox3.lookup("#buttonPay");
-        orderVBox.getChildren().remove(itemVbox);
+
+        DashboardController.getInstance().order.getChildren().remove(itemVbox);
         DashboardController.getInstance().getAndUpdatePrice();
     }
 
     public void incrementQnt(ActionEvent event) {
-        // get the button that was clicked
-        Button button = (Button) event.getSource();
-        // get the parent VBox of element
-        VBox itemVbox = (VBox) button.getParent().getParent();
-        // get the VBox Parent of the itemVbox
-        VBox orderVBox = (VBox) itemVbox.getParent();
-        // get the 3 vbox dashboard right
-        VBox dashboardVbox3 = (VBox) orderVBox.getParent().getParent().getParent().getParent();
-        Button buttonPay = (Button) dashboardVbox3.lookup("#buttonPay");
         incrementQnt();
         DashboardController.getInstance().getAndUpdatePrice();
     }
@@ -69,15 +58,6 @@ public class OrderItemController {
     }
 
     public void decreaseQnt(ActionEvent event) {
-        // get the button that was clicked
-        Button button = (Button) event.getSource();
-        // get the parent VBox of element
-        VBox itemVbox = (VBox) button.getParent().getParent();
-        // get the VBox Parent of the itemVbox
-        VBox orderVBox = (VBox) itemVbox.getParent();
-        // get the 3 vbox dashboard right
-        VBox dashboardVbox3 = (VBox) orderVBox.getParent().getParent().getParent().getParent();
-        Button buttonPay = (Button) dashboardVbox3.lookup("#buttonPay");
         if(this.quantity == 1){
             removeProduct(event);
             return;
@@ -88,11 +68,15 @@ public class OrderItemController {
         DashboardController.getInstance().getAndUpdatePrice();
     }
 
+    public Integer getProductId() {
+        return productId;
+    }
+
     public Double getPrice() {
         return price;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 }

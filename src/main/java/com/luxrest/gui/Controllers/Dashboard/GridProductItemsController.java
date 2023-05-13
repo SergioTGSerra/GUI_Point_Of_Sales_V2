@@ -27,7 +27,7 @@ public class GridProductItemsController {
             GridPane.setConstraints(btnProduct, colunaAtual, linhaAtual);
             products.getChildren().add(btnProduct);
             btnProduct.setOnAction(event -> DashboardController.getInstance().addProductToOrder(
-                    Long.parseLong(object.get("id").toString()),
+                    Integer.parseInt(object.get("id").toString()),
                     object.get("name").toString(),
                     Double.parseDouble(object.get("price").toString())
             ));

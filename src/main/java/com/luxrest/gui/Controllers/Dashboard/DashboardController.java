@@ -45,25 +45,23 @@ public class DashboardController {
             btnCategory.setId(object.get("id").toString());
             //Atualiza os produtos da grid quando clicado no butão da categoria
             btnCategory.setOnAction(event -> {
+                MidColunm.getChildren().clear();
                 paymentOpen = false;
+                categories.getChildren().forEach(node -> node.getStyleClass().remove("categoryButtonSelected"));
                 btnCategory.getStyleClass().add("categoryButtonSelected");
-                if (GridProductItemsController.getInstance() != null)
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Dashboard/Modules/GridProductItems.fxml"));
+                try {
+                    GridPane root = fxmlLoader.load();
                     GridProductItemsController.getInstance().updateProductToGrid(Integer.parseInt(btnCategory.getId()));
-                else {
-                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Dashboard/Modules/GridProductItems.fxml"));
-                    try {
-                        GridPane root = fxmlLoader.load();
-                        GridProductItemsController.getInstance().updateProductToGrid(Integer.parseInt(btnCategory.getId()));
-                        MidColunm.getChildren().add(root);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    MidColunm.getChildren().add(root);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             });
         }
     }
 
-    public void addProductToOrder(Long id, String name, Double price){
+    public void addProductToOrder(Integer id, String name, Double price){
         Node existingItem = order.lookup("#" + id);
         if (existingItem != null) {
             OrderItemController oic = (OrderItemController) existingItem.getUserData();
@@ -101,11 +99,6 @@ public class DashboardController {
         }
     }
 
-//    public void setPriceInPayment(Double price) {
-//        PaymentCashBodyController.getInstance().setPrice(price);
-//    }
-
-
     public void deleteOrderAction() {
         order.getChildren().clear();
         getAndUpdatePrice();
@@ -121,14 +114,13 @@ public class DashboardController {
         }
     }
 
-
     public void openPaymentHeader() {
         MidColunm.getChildren().clear();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Dashboard/Modules/Payments/PaymentHeader.fxml"));
         try {
             VBox root = fxmlLoader.load();
             MidColunm.getChildren().add(root);
-            //resetColorButtonSelected();
+            categories.getChildren().forEach(node -> node.getStyleClass().remove("categoryButtonSelected"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -136,17 +128,18 @@ public class DashboardController {
 
     private void openPaymentSucessful() {
         MidColunm.getChildren().clear();
+        order.setDisable(true);
         FXMLLoader fxmlLoaderSuccessful = new FXMLLoader(App.class.getResource("Dashboard/Modules/Payments/paymentSuccessful.fxml"));
         try {
             VBox rootSuccessful = fxmlLoaderSuccessful.load();
             MidColunm.getChildren().add(rootSuccessful);
-            setTimer();
+            animationPayment();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private Timer setTimer() {
+    private void animationPayment() {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -154,12 +147,12 @@ public class DashboardController {
                 Platform.runLater(() -> {
                     MidColunm.getChildren().clear();
                     order.getChildren().clear();
+                    order.setDisable(false);
                     getAndUpdatePrice();
                     paymentOpen = false;
                 });
             }
         }, 2600);
-        return timer;
     }
 
     /*** Singleton ***/
