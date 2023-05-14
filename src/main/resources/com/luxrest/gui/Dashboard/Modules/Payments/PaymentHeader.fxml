@@ -19,13 +19,13 @@
          <Insets bottom="20.0" />
       </VBox.margin>
    </HBox>
-   <HBox alignment="CENTER">
+   <HBox fx:id="paymentMethods" alignment="CENTER">
       <Button fx:id="cashButton" onAction="#showContentCash" styleClass="selectOptionPaymentButton" text="Cash">
          <HBox.margin>
             <Insets right="20.0" />
          </HBox.margin>
       </Button>
-      <Button onAction="#showContentCard" styleClass="selectOptionPaymentButton" text="Credit Card" />
+      <Button fx:id="cardButton" onAction="#showContentCard" styleClass="selectOptionPaymentButton" text="Credit Card" />
    </HBox>
    <VBox fx:id="body" alignment="CENTER" />
    <padding>

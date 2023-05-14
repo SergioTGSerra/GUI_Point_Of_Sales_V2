@@ -68,6 +68,15 @@
 .selectOptionPaymentButton{
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 5);
     -fx-background-radius: 20;
+    -fx-background-color: #FFF;
+    -fx-pref-width: 140px;
+    -fx-min-height: 125px;
+    -fx-text-fill: black;
+}
+
+.selectedOptionPaymentButton{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 5);
+    -fx-background-radius: 20;
     -fx-background-color: #003049;
     -fx-pref-width: 140px;
     -fx-min-height: 125px;
