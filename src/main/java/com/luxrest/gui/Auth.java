@@ -33,15 +33,16 @@ public class Auth {
     }
 
     public void refreshAccessToken() {
-        try {
-            JSONObject response = HttpConnection.Post("http://"+ Auth.getInstance().getEndPoint() +"/api/v1/auth/refresh-token", new JSONObject(), Auth.getInstance().getAccessToken());
+        if (this.accessToken != null)
+            try {
+                JSONObject response = HttpConnection.Post("http://"+ Auth.getInstance().getEndPoint() +"/api/v1/auth/refresh-token", new JSONObject(), Auth.getInstance().getAccessToken());
 
-            String accessToken = extractToken(String.valueOf(response));
-            Auth.getInstance().setAccessToken(accessToken);
+                String accessToken = extractToken(String.valueOf(response));
+                Auth.getInstance().setAccessToken(accessToken);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
     public String extractToken(String tokenString) {
         JSONParser parser = new JSONParser();
