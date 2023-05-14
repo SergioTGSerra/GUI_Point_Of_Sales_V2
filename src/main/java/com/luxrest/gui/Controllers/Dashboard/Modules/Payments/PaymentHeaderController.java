@@ -3,6 +3,7 @@ package com.luxrest.gui.Controllers.Dashboard.Modules.Payments;
 import com.luxrest.gui.App;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -20,6 +21,17 @@ public class PaymentHeaderController {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Dashboard/Modules/Payments/PaymentCashBody.fxml"));
         try {
             VBox paymentCashBody = fxmlLoader.load();
+            body.getChildren().add(paymentCashBody);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void showContentCard() {
+        body.getChildren().clear();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Dashboard/Modules/Payments/PaymentCardBody.fxml"));
+        try {
+            ImageView paymentCashBody = fxmlLoader.load();
             body.getChildren().add(paymentCashBody);
         } catch (IOException e) {
             throw new RuntimeException(e);

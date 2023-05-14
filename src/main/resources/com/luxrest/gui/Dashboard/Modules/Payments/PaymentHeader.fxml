@@ -25,9 +25,9 @@
             <Insets right="20.0" />
          </HBox.margin>
       </Button>
-      <Button styleClass="selectOptionPaymentButton" text="Credit Card" />
+      <Button onAction="#showContentCard" styleClass="selectOptionPaymentButton" text="Credit Card" />
    </HBox>
-   <VBox fx:id="body" />
+   <VBox fx:id="body" alignment="CENTER" />
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
