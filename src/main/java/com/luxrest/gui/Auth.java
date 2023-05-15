@@ -35,7 +35,7 @@ public class Auth {
     public void refreshAccessToken() {
         if (this.accessToken != null)
             try {
-                JSONObject response = HttpConnection.Post("http://"+ Auth.getInstance().getEndPoint() +"/api/v1/auth/refresh-token", new JSONObject(), Auth.getInstance().getAccessToken());
+                JSONObject response = HttpConnection.Post("http://"+ this.endPoint +"/api/v1/auth/refresh-token", new JSONObject(), this.accessToken);
 
                 String accessToken = extractToken(String.valueOf(response));
                 Auth.getInstance().setAccessToken(accessToken);

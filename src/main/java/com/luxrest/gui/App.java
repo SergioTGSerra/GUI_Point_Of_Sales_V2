@@ -52,7 +52,7 @@ public class App extends Application {
             public void run() {
                 Auth.getInstance().refreshAccessToken();
             }
-        }, 0, 50000);
+        }, 0, 40000);
 
         launch();
     }
