@@ -3,10 +3,13 @@ package com.luxrest.gui.Controllers.Dashboard;
 import com.luxrest.gui.Auth;
 import com.luxrest.gui.HttpConnection;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -36,26 +39,24 @@ public class GridProductItemsController {
 
             try {
                 // Fazer a requisição HTTP para obter a imagem
-                URL url = new URL("http://185.113.143.51:8081/api/v1/products/image/5");  // Substitua pela URL correta da imagem
+                URL url = new URL("http://" + Auth.getInstance().getEndPoint() + "/api/v1/products/image/" + object.get("id"));  // Substitua pela URL correta da imagem
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
 
                 // Adicionar cabeçalho de autorização
                 connection.setRequestProperty("Authorization", "Bearer " + Auth.getInstance().getAccessToken());
 
-                // Verificar o código de resposta da requisição
-                int responseCode = connection.getResponseCode();
-                if (responseCode == HttpURLConnection.HTTP_OK) {
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     // Ler a imagem a partir do InputStream
                     InputStream inputStream = connection.getInputStream();
                     Image image = new Image(inputStream);
 
                     // Exibir a imagem no ImageView
                     imageView.setImage(image);
-                    imageView.setFitHeight(50);
-                    imageView.setFitWidth(50);
+                    imageView.setFitHeight(100);
+                    imageView.setFitWidth(100);
                 } else {
-                    System.out.println("Falha na requisição: " + responseCode);
+                    System.out.println("Image not found for product: " + object.get("id"));
                 }
 
                 connection.disconnect();
@@ -64,11 +65,14 @@ public class GridProductItemsController {
             }
 
             Button btnProduct;
-            if (imageView != null)
-                btnProduct = new Button(object.get("price").toString() + "€\n" + object.get("name").toString(), imageView);
-            else
-                btnProduct = new Button(object.get("price").toString() + "€\n" + object.get("name").toString());
-
+            if (imageView.getImage() != null) {
+                VBox vBox = new VBox(imageView, new Label("\n" + object.get("price").toString() + "€\n" + object.get("name").toString()));
+                vBox.setAlignment(Pos.CENTER);
+                btnProduct = new Button();
+                btnProduct.setGraphic(vBox);
+            } else {
+                btnProduct = new Button("\n" + object.get("price").toString() + "€\n" + object.get("name").toString());
+            }
 
             btnProduct.getStyleClass().add("productButton");
             btnProduct.setId(object.get("id").toString());
@@ -77,7 +81,8 @@ public class GridProductItemsController {
             btnProduct.setOnAction(event -> DashboardController.getInstance().addProductToOrder(
                     Integer.parseInt(object.get("id").toString()),
                     object.get("name").toString(),
-                    Double.parseDouble(object.get("price").toString())
+                    Double.parseDouble(object.get("price").toString()),
+                    imageView
             ));
             colunaAtual++;
             if (colunaAtual == colunas) {

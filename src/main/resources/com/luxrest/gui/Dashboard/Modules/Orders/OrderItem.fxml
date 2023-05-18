@@ -7,7 +7,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.Dashboard.Modules.Orders.OrderItemController">
     <HBox>
-        <ImageView fitHeight="65.0" fitWidth="65.0">
+        <ImageView fx:id="productImage" fitHeight="65.0" fitWidth="65.0">
             <Image url="@../../../Assets/Images/logo.png" />
         </ImageView>
         <Label fx:id="productName" style="-fx-font-weight: 500;" styleClass="fontSizeLabels" text="name" />

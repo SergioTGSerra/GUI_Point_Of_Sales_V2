@@ -3,14 +3,13 @@ package com.luxrest.gui.Controllers.Dashboard;
 import com.luxrest.gui.App;
 import com.luxrest.gui.Auth;
 import com.luxrest.gui.Controllers.Dashboard.Modules.Orders.OrderItemController;
-import com.luxrest.gui.Controllers.Dashboard.Modules.Payments.PaymentCashBodyController;
 import com.luxrest.gui.HttpConnection;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.json.simple.JSONArray;
@@ -63,7 +62,7 @@ public class DashboardController {
         }
     }
 
-    public void addProductToOrder(Integer id, String name, Double price){
+    public void addProductToOrder(Integer id, String name, Double price, ImageView imageView){
         Node existingItem = order.lookup("#" + id);
         if (existingItem != null) {
             OrderItemController oic = (OrderItemController) existingItem.getUserData();
@@ -74,7 +73,7 @@ public class DashboardController {
             try {
                 VBox item = fxmlLoader.load();
                 OrderItemController oic = fxmlLoader.getController();
-                oic.setData(id, name, price);
+                oic.setData(id, name, price, imageView);
                 item.setId(String.valueOf(id));
                 item.setUserData(oic);
                 order.getChildren().add(item);

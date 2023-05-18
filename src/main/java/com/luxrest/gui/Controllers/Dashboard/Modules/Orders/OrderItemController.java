@@ -6,9 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 public class OrderItemController {
+    public ImageView productImage;
     private Integer productId;
     private Double price;
     private Integer quantity;
@@ -19,13 +21,15 @@ public class OrderItemController {
     @FXML
     public Label quantityLabel;
 
-    public void setData(Integer id, String name, Double price){
+    public void setData(Integer id, String name, Double price, ImageView imageView){
         this.quantity = 1;
         this.productId = id;
         this.productName.setText(name);
         this.price = price;
         this.priceLabel.setText(price+" €");
         this.quantityLabel.setText(String.valueOf(this.quantity));
+        if(imageView.getImage() != null)
+            this.productImage.setImage(imageView.getImage());
     }
 
     public void removeProduct(ActionEvent event) {
