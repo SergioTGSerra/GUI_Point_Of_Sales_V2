@@ -111,12 +111,37 @@ public class DashboardController {
 
     public void buttonPaymentAction(){
         if(paymentOpen){
+            saveProductsDB();
             openPaymentSucessful();
             paymentOpen = false;
         }else{
             paymentOpen = true;
             openPaymentHeader();
         }
+    }
+
+    private void saveProductsDB() {
+        JSONObject newOrder = new JSONObject();
+        newOrder.put("orderNote", "GUI Order");
+        newOrder.put("orderStatus", "PROCESSING");
+        newOrder.put("paymentMethod", "CASH");
+
+        JSONArray orderLineArray = new JSONArray();
+
+        for (Node node : order.getChildren()) {
+            OrderItemController orderItemController = (OrderItemController) node.getUserData();
+
+
+            JSONObject orderLine = new JSONObject();
+            orderLine.put("quantity", orderItemController.getQuantity());
+            orderLine.put("product", orderItemController.getProductId());
+
+            orderLineArray.add(orderLine);
+        }
+
+        newOrder.put("orderLine", orderLineArray);
+
+        HttpConnection.Post("http://"+ Auth.getInstance().getEndPoint() +"/api/v1/orders", newOrder, Auth.getInstance().getAccessToken());
     }
 
     public void openPaymentHeader() {
