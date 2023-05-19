@@ -1,5 +1,6 @@
 package com.luxrest.gui;
 
+import com.luxrest.gui.Controllers.Dashboard.DashboardController;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -33,15 +34,15 @@ public class Auth {
     }
 
     public void refreshAccessToken() {
-        try {
-            JSONObject response = HttpConnection.Post("http://"+ this.endPoint +"/api/v1/auth/refresh-token", new JSONObject(), this.accessToken);
+        if(DashboardController.getInstance() != null)
+            try {
+                JSONObject response = HttpConnection.Post("http://"+ this.endPoint +"/api/v1/auth/refresh-token", new JSONObject(), this.accessToken);
+                String accessToken = extractToken(String.valueOf(response));
+                Auth.getInstance().setAccessToken(accessToken);
 
-            String accessToken = extractToken(String.valueOf(response));
-            Auth.getInstance().setAccessToken(accessToken);
-
-        } catch (Exception e) {
-            System.out.println("Error refresh token!");
-        }
+            } catch (Exception e) {
+                System.out.println("Error refresh token!");
+            }
     }
     public String extractToken(String tokenString) {
         JSONParser parser = new JSONParser();
