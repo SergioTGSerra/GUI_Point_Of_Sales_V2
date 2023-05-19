@@ -13,10 +13,9 @@ import javafx.scene.layout.VBox;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.Base64;
 
 public class GridProductItemsController {
     @FXML
@@ -34,34 +33,14 @@ public class GridProductItemsController {
             JSONObject object = (JSONObject) o;
 
 
-
             ImageView imageView = new ImageView();
+            if (object.get("image") != null) {
+                InputStream inputStream = new ByteArrayInputStream(Base64.getDecoder().decode((String) object.get("image")));
+                Image image = new Image(inputStream);
+                imageView.setImage(image);
+                imageView.setFitHeight(100);
+                imageView.setFitWidth(100);
 
-            try {
-                // Fazer a requisição HTTP para obter a imagem
-                URL url = new URL("http://" + Auth.getInstance().getEndPoint() + "/api/v1/products/image/" + object.get("id"));  // Substitua pela URL correta da imagem
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-
-                // Adicionar cabeçalho de autorização
-                connection.setRequestProperty("Authorization", "Bearer " + Auth.getInstance().getAccessToken());
-
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    // Ler a imagem a partir do InputStream
-                    InputStream inputStream = connection.getInputStream();
-                    Image image = new Image(inputStream);
-
-                    // Exibir a imagem no ImageView
-                    imageView.setImage(image);
-                    imageView.setFitHeight(100);
-                    imageView.setFitWidth(100);
-                } else {
-                    System.out.println("Image not found for product: " + object.get("id"));
-                }
-
-                connection.disconnect();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
 
             Button btnProduct;
