@@ -91,7 +91,7 @@ public class DashboardController {
             cont += oic.getQuantity() * oic.getPrice();
         }
         if(cont != 0) {
-            buttonPay.setText(String.valueOf(cont));
+            buttonPay.setText(cont + " €");
             return cont;
         }
         else{

@@ -40,16 +40,17 @@
       </ScrollPane>
    </VBox>
    <VBox alignment="CENTER" style="-fx-background-color: #FFF;" GridPane.columnIndex="4">
-      <HBox alignment="BOTTOM_LEFT">
+      <HBox alignment="CENTER">
          <Region />
          <Label text="New Order">
             <font>
                <Font size="18.0" />
             </font></Label>
          <Region HBox.hgrow="ALWAYS" />
+         <Label text="Clear order" />
          <Button onAction="#deleteOrderAction" style="-fx-background-color: transparent;">
             <graphic>
-               <ImageView fitHeight="22.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="36.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../Assets/Icons/delete.png" />
                </ImageView>
             </graphic></Button>
@@ -69,7 +70,10 @@
             <Insets top="20.0" />
          </VBox.margin>
       </ScrollPane>
-      <Button fx:id="buttonPay" maxHeight="50.0" maxWidth="1.7976931348623157E308" onAction="#buttonPaymentAction" styleClass="payButton" text="New Order" VBox.vgrow="ALWAYS" />
+      <Button fx:id="buttonPay" maxHeight="50.0" maxWidth="1.7976931348623157E308" onAction="#buttonPaymentAction" styleClass="payButton" text="New Order   -&gt;" VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
       <opaqueInsets>
          <Insets />
       </opaqueInsets>

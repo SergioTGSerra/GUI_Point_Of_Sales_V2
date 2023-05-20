@@ -3,25 +3,44 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luxrest.gui.Controllers.Dashboard.Modules.Payments.PaymentCashBodyController">
    <HBox>
       <Region />
-      <Label styleClass="fontSizeLabelsPayment" text="Valor do pedido" />
+      <Label text="Value of the order">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
       <Region HBox.hgrow="ALWAYS" />
-      <Label fx:id="amountPayLabel" styleClass="fontSizeLabelsPayment" text="€"/>
+      <Label fx:id="amountPayLabel" text="€">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </HBox>
    <HBox>
       <Region />
-      <Label styleClass="fontSizeLabelsPayment" text="Recebido" />
+      <Label text="Money received">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
       <Region HBox.hgrow="ALWAYS" />
-      <Label fx:id="receiveLabel" styleClass="fontSizeLabelsPayment" text="€"/>
+      <Label fx:id="receiveLabel" text="€">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </HBox>
    <HBox>
       <Region />
-      <Label styleClass="fontSizeLabelsPayment" text="Troco" />
-      <Region HBox.hgrow="ALWAYS"/>
-      <Label fx:id="changeLabel" styleClass="fontSizeLabelsPayment" text="€"/>
+      <Label text="Change to give">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Region HBox.hgrow="ALWAYS" />
+      <Label fx:id="changeLabel" text="€">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </HBox>
    <GridPane alignment="CENTER" hgap="20.0" vgap="20.0">
       <columnConstraints>
