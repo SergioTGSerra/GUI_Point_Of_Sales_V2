@@ -36,7 +36,7 @@ public class DashboardController {
     }
 
     private void createCategoryBtns() {
-        JSONArray array = HttpConnection.Get("http://" + Auth.getInstance().getEndPoint() +  "/api/v1/categories", Auth.getInstance().getAccessToken());
+        JSONArray array = HttpConnection.Get(Auth.getInstance().getEndPoint() +  "/api/v1/categories", Auth.getInstance().getAccessToken());
         assert array != null;
         for (Object o : array) {
             JSONObject object = (JSONObject) o;
@@ -141,7 +141,7 @@ public class DashboardController {
 
         newOrder.put("orderLine", orderLineArray);
 
-        HttpConnection.Post("http://"+ Auth.getInstance().getEndPoint() +"/api/v1/orders", newOrder, Auth.getInstance().getAccessToken());
+        HttpConnection.Post(Auth.getInstance().getEndPoint() +"/api/v1/orders", newOrder, Auth.getInstance().getAccessToken());
     }
 
     public void openPaymentHeader() {

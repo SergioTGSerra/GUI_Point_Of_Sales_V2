@@ -31,7 +31,7 @@ public class DomainController {
 
             Auth.getInstance().setEndPoint(endpoint);
 
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Login/login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Login/Login.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) domain.getScene().getWindow();
             stage.setScene(scene);

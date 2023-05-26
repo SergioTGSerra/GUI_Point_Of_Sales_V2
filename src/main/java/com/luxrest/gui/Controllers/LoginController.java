@@ -38,7 +38,7 @@ public class LoginController {
             userData.put("username", username.getText());
             userData.put("password", password.getText());
 
-            JSONObject response = HttpConnection.Post("http://"+ Auth.getInstance().getEndPoint() +"/api/v1/auth/authenticate", userData);
+            JSONObject response = HttpConnection.Post(Auth.getInstance().getEndPoint() +"/api/v1/auth/authenticate", userData);
 
             String accessToken = extractToken(String.valueOf(response));
             Auth.getInstance().setAccessToken(accessToken);
