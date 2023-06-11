@@ -56,6 +56,7 @@ public class LoginController {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) username.getScene().getWindow();
             stage.setScene(scene);
+            stage.setFullScreen(true);
 
         } catch (Exception e) {
             error.setVisible(true);

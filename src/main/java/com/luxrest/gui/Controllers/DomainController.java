@@ -35,6 +35,7 @@ public class DomainController {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) domain.getScene().getWindow();
             stage.setScene(scene);
+            stage.setFullScreen(true);
 
         } catch (SQLException e) {
             System.out.println("Erro ao salvar o EndPoint: " + e.getMessage());

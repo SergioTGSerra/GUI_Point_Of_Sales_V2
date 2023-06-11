@@ -38,6 +38,7 @@ public class App extends Application {
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("App");
             stage.setScene(scene);
+            stage.setFullScreen(true);
             stage.show();
 
         } catch (SQLException e) {
